@@ -3,7 +3,7 @@
 ![GitHub Repo stars](https://img.shields.io/github/stars/alittlebroken/calculator)
 ![GitHub License](https://img.shields.io/github/license/alittlebroken/calculator)
 
-A onlie app that allows you to calculate different operations performed against two or more numbers
+A online app that allows you to calculate different operations performed against two or more numbers
 
 # TechStack
 
