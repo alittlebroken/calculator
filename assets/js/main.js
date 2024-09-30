@@ -9,6 +9,7 @@ const btnSeven  = document.getElementById('btn-7');
 const btnEight = document.getElementById('btn-8');
 const btnNine = document.getElementById('btn-9');
 const btZero = document.getElementById('btn-0');
+const btDot = document.getElementById('btn-dot');
 
 /* Get references to the operations button */
 const btnEquals = document.getElementById('btn-equals');
@@ -20,58 +21,97 @@ const btnMultiply = document.getElementById('btn-multiply');
 /* reference for the calculator display */
 const display = document.getElementById('calculator_result');
 
+/* Handles if we have just calculated a result, we do this so that the 
+   display is reset when a new number is pressed after the equals button. */
+let calculated = false;
+
+/*  Updates the display on the calculator */
+const updateDisplay = (value) => {
+
+    /* If we have just calculated a result then when a new digit
+       is pressed it should clear out the old display first to ensure
+       the old number is not used in the new calculation */
+    if(calculated) {
+        display.value = value;
+        /* Reset the calculated value */
+        calculated = false;
+    } else {
+        display.value += value;
+    }
+
+};
+
+/* If we have just calculated a result but then click on a operator like add or minus etc
+   then we should use the previous result as the new starting digit for the operation rather
+   than clearing the display */
+const updateDisplayForOperation = value => {
+
+    if(display.value != ''){
+        
+        /* Reset the calculated var so the display is not cleared before hand */
+        calculated = false;
+
+    }
+
+    updateDisplay(value);
+
+}
+
 /* Handles a button click */
 const onClick = (event) => {
 
     /* Check the button type that was clicked */
     switch(event.target.innerText) {
         case '1':
-            display.value += '1';
+            updateDisplay('1');
             break;       
         case '2':
-            display.value += '2';
+            updateDisplay('2');
             break;
         case '3':
-            display.value += '3';
+            updateDisplay('3');
             break;
         case '4':
-            display.value += '4';
+            updateDisplay('4');
             break;
         case '5':
-            display.value += '5';
+            updateDisplay('5');
             break;
         case '6':
-            display.value += '6';
+            updateDisplay('6');
             break;
         case '7':
-            display.value += '7';
+            updateDisplay('7');
             break;
         case '8':
-            display.value += '8';
+            updateDisplay('8');
             break;
         case '9':
-            display.value += '9';
+            updateDisplay('9');
             break;
         case '0':
-            display.value += '0';
+            updateDisplay('0');
             break;
         case '+':
-            display.value += ' + ';
+            updateDisplayForOperation(' + ');
             break;
         case '-':
-            display.value += ' - ';
+            updateDisplayForOperation(' - ');
             break;
         case '/':
-            display.value += ' / ';
+            updateDisplayForOperation(' / ');
             break;
         case '*':
-            display.value += ' * ';
+            updateDisplayForOperation(' * ');
             break;
         case '=':
             calculate();
             break;
         case 'C':
             display.value = '';
+            break;
+        case '.':
+            display.value += '.';
             break;
     }
     
@@ -90,5 +130,8 @@ const calculate = () => {
     /* Caluclate the result and display it */
     const result = math.evaluate(input);
     display.value = result;
+
+    /* Update to say we have just calculated a result */
+    calculated = true;
 
 }
