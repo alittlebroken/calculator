@@ -70,7 +70,7 @@ const onClick = (event) => {
         case '=':
             calculate();
             break;
-        case 'CLR':
+        case 'C':
             display.value = '';
             break;
     }
