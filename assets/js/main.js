@@ -70,6 +70,9 @@ const onClick = (event) => {
         case '=':
             calculate();
             break;
+        case 'CLR':
+            display.value = '';
+            break;
     }
     
 }
@@ -79,7 +82,7 @@ const calculate = () => {
 
     /* Get the result as the time of clicking the equals button and clear out the display */
     const input = display.value;
-    display.value = '';
+    display.innerText = '';
 
     /* Caluclate the result and display it */
     const result = math.evaluate(input);
