@@ -80,6 +80,9 @@ const onClick = (event) => {
 /* Handles the calculation */
 const calculate = () => {
 
+    /* Check we have a value to actually calculate */
+    if(display.value == '') return;
+
     /* Get the result as the time of clicking the equals button and clear out the display */
     const input = display.value;
     display.innerText = '';
