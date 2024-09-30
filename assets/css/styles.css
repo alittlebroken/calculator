@@ -75,6 +75,13 @@ body {
     padding: 10px;
 }
 
+.calc-actions {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    width: 40px;
+}
+
 .calc-digit:hover, .calc-operator:hover, .calc-operator-special:hover {
     background-color: black;
     color: white;
